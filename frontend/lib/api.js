@@ -3,7 +3,7 @@ const API_URL =
   "https://syncup-full-stack-task-1.onrender.com";
 
 export async function fetchFeeds() {
-  const response = await fetch(`${API_URL}/api/feed`, {
+  const response = await fetch(`${API_URL}/feed`, {
     cache: "no-store",
   });
 
@@ -15,7 +15,7 @@ export async function fetchFeeds() {
 }
 
 export async function createFeed(payload) {
-  const response = await fetch(`${API_URL}/api/feed`, {
+  const response = await fetch(`${API_URL}/feed`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
