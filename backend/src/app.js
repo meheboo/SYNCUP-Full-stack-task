@@ -1,16 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 
-const { getClientOrigins } = require("./config/clientOrigins");
+const { corsOrigin } = require("./config/clientOrigins");
 const feedRoutes = require("./routes/feedRoutes");
 
 const app = express();
 
-const clientOrigins = getClientOrigins();
-
 app.use(
   cors({
-    origin: clientOrigins,
+    origin: corsOrigin,
     methods: ["GET", "POST"],
   })
 );
