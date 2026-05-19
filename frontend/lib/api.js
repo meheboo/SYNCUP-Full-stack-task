@@ -1,4 +1,6 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://syncup-full-stack-task-1.onrender.com/api";
 
 export async function fetchFeeds() {
   const response = await fetch(`${API_URL}/feed`, {
