@@ -1,11 +1,12 @@
 const { Server } = require("socket.io");
+const { getClientOrigins } = require("./clientOrigins");
 
 let io;
 
 const initSocket = (server) => {
   io = new Server(server, {
     cors: {
-      origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
+      origin: getClientOrigins(),
       methods: ["GET", "POST"],
     },
     connectionStateRecovery: {},

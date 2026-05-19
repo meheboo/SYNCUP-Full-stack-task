@@ -1,19 +1,30 @@
 const express = require("express");
 const cors = require("cors");
 
+const { getClientOrigins } = require("./config/clientOrigins");
 const feedRoutes = require("./routes/feedRoutes");
 
 const app = express();
 
-const clientOrigin = process.env.CLIENT_ORIGIN || "http://localhost:3000";
+const clientOrigins = getClientOrigins();
 
 app.use(
   cors({
-    origin: clientOrigin,
+    origin: clientOrigins,
     methods: ["GET", "POST"],
   })
 );
 app.use(express.json());
+
+app.get("/", (_req, res) => {
+  res.json({
+    message: "SYNCUP backend is running",
+    endpoints: {
+      health: "/health",
+      feed: "/feed",
+    },
+  });
+});
 
 app.get("/health", (_req, res) => {
   res.json({ status: "ok" });
